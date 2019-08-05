@@ -1,0 +1,17 @@
+{
+  "name": "testProject",
+  "displayName": "some name",
+  "expo": {
+    "name": "testProject",
+    "slug": "expo-template-bare",
+    "privacy": "unlisted",
+    "sdkVersion": "34.0.0",
+    "version": "1.0.0",
+    "entryPoint": "./src/App.js",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ]
+  }
+}
