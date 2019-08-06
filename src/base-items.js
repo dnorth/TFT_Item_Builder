@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
-import items from '../tft-assets/data/items'
+import { View, Text, Image, StyleSheet, TouchableHighlight } from 'react-native'
+import items from '../assets/data/items'
 
 export default class BaseItems extends Component {
     constructor(props) {
@@ -25,28 +25,33 @@ export default class BaseItems extends Component {
 }
 
 const BaseItem = (props) => (
-    <View style={styles.baseItemContainer}>
+    <TouchableHighlight style={styles.baseItemContainer} onPress={onBaseItemPress}>
         <Image
             style={styles.icon}
             source={props.icon}
         />
-    </View>
+    </TouchableHighlight>
 )
+
+const onBaseItemPress = () => {
+    console.log('pressed on something!')
+}
 
 const styles = StyleSheet.create({
     baseItemsContainer: {
         flex: 1,
         flexWrap: 'wrap',
         flexDirection: 'row',
+        justifyContent: 'center',
     },
     baseItemContainer: {
-        margin: 8
+        margin: 16
     },
     icon: {
         height: 40,
         width: 40,
+        backgroundColor: 'black',
         borderWidth: 1,
         borderColor: '#d47559',
-        backgroundColor: 'black'
     },
   });
