@@ -3,11 +3,19 @@ import { registerRootComponent, AppLoading } from 'expo';
 import * as Font from 'expo-font'
 import { Platform, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import BaseItems from './base-items'
+import SelectedItems from './selected-items'
 import Header from './header'
+import items from '../assets/data/items'
 
 class App extends Component {
-  state = {
-    fontLoaded: false
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      fontLoaded: false,
+      selectedItems: items.baseItems.map(item => ({...item, count: 0 })),
+      baseItems: items.baseItems
+    }
   }
 
   async componentDidMount() {
@@ -21,7 +29,9 @@ class App extends Component {
   }
 
   render() {
-    if(!this.state.fontLoaded) {
+    const { fontLoaded, selectedItems, baseItems } = this.state
+
+    if(!fontLoaded) {
       return <AppLoading />
     }
 
@@ -30,17 +40,33 @@ class App extends Component {
         <View style={styles.container}>
           <Header />
           <View style={styles.itemsContainer}>
-            <BaseItems />
+            <BaseItems baseItems={baseItems} onBaseItemClick={this.addToSelectedItems} />
+            <SelectedItems selectedItems={selectedItems} onBaseItemClick={this.removeFromSelectedItems} />
           </View>
         </View>
       </SafeAreaView>
     );
+  }
+
+  addToSelectedItems = (selectedItemName) => {
+    this.setState(prevState => ({
+        selectedItems: prevState.selectedItems.map(item => item.name === selectedItemName ? {...item, count: item.count + 1} : item)
+      })
+    )
+  }
+
+  removeFromSelectedItems = (selectedItemName) => {
+      this.setState(prevState => ({
+        selectedItems: prevState.selectedItems.map(item => item.name === selectedItemName ? {...item, count: item.count - 1} : item)
+      })
+    )  
   }
 }
 
 const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1,
+    backgroundColor: '#123652',
     paddingTop: Platform.OS === 'android' ? 50 : 0
   },
   container: {
@@ -48,6 +74,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itemsContainer: {
+    flex: 3,
     padding: 16,
     backgroundColor: '#123652'
   }

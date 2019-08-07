@@ -1,40 +1,23 @@
 import React, { Component } from 'react'
-import { View, Text, Image, StyleSheet, TouchableHighlight } from 'react-native'
-import items from '../assets/data/items'
+import { View, Image, StyleSheet, TouchableHighlight } from 'react-native'
+import BaseItem from './base-item'
+import SectionTitle from './section-title'
 
 export default class BaseItems extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            baseItems: items.baseItems
-        }
-    }
-
     render() {
-        const { baseItems } = this.state
+        const { baseItems } = this.props
 
         return (
-            <View style={styles.baseItemsContainer}>
-                {
-                    baseItems.map(baseItem => <BaseItem key={baseItem.name} name={baseItem.name} icon={baseItem.icon} />)
-                }
+            <View>
+                <SectionTitle title="Base Items" />
+                <View style={styles.baseItemsContainer}>
+                    {
+                        baseItems.map(baseItem => <BaseItem key={baseItem.name} baseItem={baseItem} onBaseItemClick={this.props.onBaseItemClick} />)
+                    }
+                </View>
             </View>
         )
     }
-}
-
-const BaseItem = (props) => (
-    <TouchableHighlight style={styles.baseItemContainer} onPress={onBaseItemPress}>
-        <Image
-            style={styles.icon}
-            source={props.icon}
-        />
-    </TouchableHighlight>
-)
-
-const onBaseItemPress = () => {
-    console.log('pressed on something!')
 }
 
 const styles = StyleSheet.create({
@@ -43,15 +26,6 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'center',
-    },
-    baseItemContainer: {
-        margin: 16
-    },
-    icon: {
-        height: 40,
-        width: 40,
-        backgroundColor: 'black',
-        borderWidth: 1,
-        borderColor: '#d47559',
+        alignItems: 'flex-start'
     },
   });

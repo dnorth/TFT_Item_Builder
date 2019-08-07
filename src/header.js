@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     headerContainer: {
         backgroundColor: '#042037',
         alignSelf: 'stretch',
-        borderBottomColor: '#718EA4' 
+        borderBottomColor: '#718EA4',
+        borderBottomWidth: 2
     },
     title: {
         flex: 1,
