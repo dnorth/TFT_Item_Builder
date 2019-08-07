@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
+import AppColors from './app-colors'
 
 import StyledText from './styled-text'
 
@@ -13,9 +14,9 @@ export default Header
 
 const styles = StyleSheet.create({
     headerContainer: {
-        backgroundColor: '#042037',
+        backgroundColor: AppColors.color_5,
         alignSelf: 'stretch',
-        borderBottomColor: '#718EA4',
+        borderBottomColor: AppColors.color_1,
         borderBottomWidth: 2
     },
     title: {

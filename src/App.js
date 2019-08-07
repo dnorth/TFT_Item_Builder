@@ -6,6 +6,7 @@ import BaseItems from './base-items'
 import SelectedItems from './selected-items'
 import Header from './header'
 import items from '../assets/data/items'
+import AppColors from './app-colors'
 
 class App extends Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class App extends Component {
 const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1,
-    backgroundColor: '#123652',
+    backgroundColor: AppColors.color_4,
     paddingTop: Platform.OS === 'android' ? 50 : 0
   },
   container: {
@@ -75,8 +76,7 @@ const styles = StyleSheet.create({
   },
   itemsContainer: {
     flex: 3,
-    padding: 16,
-    backgroundColor: '#123652'
+    padding: 16
   }
 });
 

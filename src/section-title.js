@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import StyledText from './styled-text'
+import AppColors from './app-colors'
 
 export default class SectionTitle extends Component {
     render() {
@@ -14,7 +15,7 @@ export default class SectionTitle extends Component {
 
 const styles = StyleSheet.create({
     sectionTitleContainer: {
-        borderBottomColor: '#718EA4',
+        borderBottomColor: AppColors.color_1,
         borderBottomWidth: 1
     },
     sectionTitle: {
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 24,
         flexDirection: 'row',
         alignSelf: 'flex-start',
-        borderBottomColor: '#d47559',
+        borderBottomColor: AppColors.color_accent,
         borderBottomWidth: 4,
         fontSize: 16
     }

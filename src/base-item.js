@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Image, StyleSheet, TouchableHighlight } from 'react-native'
 import items from '../assets/data/items'
+import AppColors from './app-colors'
 
 export default class BaseItem extends Component {
     render() {
@@ -22,10 +23,10 @@ const styles = StyleSheet.create({
         margin: 16
     },
     icon: {
-        height: 40,
-        width: 40,
+        height: 60,
+        width: 60,
         backgroundColor: 'black',
         borderWidth: 1,
-        borderColor: '#d47559',
+        borderColor: AppColors.color_accent,
     },
   });
