@@ -3,7 +3,7 @@ import { registerRootComponent, AppLoading } from 'expo';
 import * as Font from 'expo-font'
 import { Platform, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import BaseItems from './base-items'
-import SelectedItems from './selected-items'
+import CombinedItems from './combined-items'
 import Header from './header'
 import items from '../assets/data/items'
 import AppColors from './app-colors'
@@ -14,8 +14,7 @@ class App extends Component {
 
     this.state = {
       fontLoaded: false,
-      selectedItems: items.baseItems.map(item => ({...item, count: 0 })),
-      baseItems: items.baseItems
+      baseItems: items.baseItems.map(item => ({...item, count: 0 })),
     }
   }
 
@@ -41,24 +40,24 @@ class App extends Component {
         <View style={styles.container}>
           <Header />
           <View style={styles.itemsContainer}>
-            <BaseItems baseItems={baseItems} onBaseItemClick={this.addToSelectedItems} />
-            <SelectedItems selectedItems={selectedItems} onBaseItemClick={this.removeFromSelectedItems} />
+            <BaseItems baseItems={baseItems} onBaseItemClick={this.addToInventory} />
+            <CombinedItems baseItems={baseItems} />
           </View>
         </View>
       </SafeAreaView>
     );
   }
 
-  addToSelectedItems = (selectedItemName) => {
+  addToInventory = (selectedItemName) => {
     this.setState(prevState => ({
-        selectedItems: prevState.selectedItems.map(item => item.name === selectedItemName ? {...item, count: item.count + 1} : item)
+        baseItems: prevState.baseItems.map(item => item.name === selectedItemName ? {...item, count: item.count + 1} : item)
       })
     )
   }
 
-  removeFromSelectedItems = (selectedItemName) => {
+  removeFromInventory = (selectedItemName) => {
       this.setState(prevState => ({
-        selectedItems: prevState.selectedItems.map(item => item.name === selectedItemName ? {...item, count: item.count - 1} : item)
+        baseItems: prevState.baseItems.map(item => item.name === selectedItemName ? {...item, count: item.count - 1} : item)
       })
     )  
   }
