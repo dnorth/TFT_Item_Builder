@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
-  "webpackServerPort": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 9284,
+  "expoServerNgrokUrl": "https://tj-ej5.anonymous.testproject.exp.direct",
+  "packagerNgrokUrl": "https://packager.tj-ej5.anonymous.testproject.exp.direct",
+  "ngrokPid": 6576,
+  "webpackServerPort": 19006
 }
